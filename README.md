@@ -4,3 +4,5 @@
 <li>If you answer the question incorrectly time will be subtracted from the clock. </li>
 <li> When all questions are answered, or the timer reaches zero the game is over.</li>
 <li> When the game is over you can save save your initials and see your score. </li>
+
+![image](/images/page%20image.PNG) 

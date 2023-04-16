@@ -11,12 +11,6 @@ body {
     /* justify-content:center; */
     background: linear-gradient(0deg, rgba(137, 125, 153, 0.788) 0%, rgba(237,245,249,1) 63%);
  }
-
-ul {
-    display: flex;
-    justify-content: space-around;
-    list-style: none;
-}
     
     
 header {
@@ -24,7 +18,7 @@ header {
     text-align:start;
     background: #4d6483c9;
     color: #fff;
-    border-bottom:30px #879274;
+    border-bottom:30px solid #879274;
 }
 
 h1 {
@@ -35,31 +29,30 @@ h1 {
     display: flex;
     justify-content: flex-end;
 }
-/* .container{
-    width: 800px;
-    max-width: 80%;
+.quiz-container{
+    width: 600px;
     background-color: white;
-    border-radius: 5px;
+    border-radius: 15px;
     padding: 10px;
     box-shadow: 0 0 10px 2px; 
     margin-left: 30%;
-    color:black
     
-} */
+}
+
 .choice-container{
     display: flex;
     margin-bottom:0.8rem;
     width: 100%;
     border-radius:3px;
     font-size: 1rem;
-    min-width: 80rem;
+    min-width: 80vw;
     background-color: pink;
     cursor:pointer;
     box-shadow: 0 0.4rem 1.4rem;
 }
-.choice-container:hover {
-    transform: scale(1.02);
-    transform: transform 100ms;
+ul{
+    list-style-type: none;
+    padding: 5;
 }
 /* buttons */
 .view-scores{ 
@@ -70,23 +63,23 @@ h1 {
     font-size: 1rem;
 
 }
-  .start-button{ 
+  #start-button{ 
     width: 150px;
     height: 40px;
     border: none;
     background-color: rgba(121, 228, 148, 0.911);
     border-radius: 2px;
     font-size: 2rem;     
-    margin-left: 40%; 
+    margin:auto; 
     cursor:grab;
 }
 
-.btn-grid{
+/* .btn-grid{
     display: grid;
     grid-template-columns: repeat(2,auto);
     gap: 10px;
     margin: 20px 0;
-}
+} */
 
 .btn{
     background-color: rgb(132, 184, 184);
@@ -104,24 +97,26 @@ h1 {
 }
 
 
-.clear-scores, .go-back{
+#clear-scores, #go-back{
     width: 150px;
     height: 40px;
     border: none;
-    background-color: rgba(45, 187, 192, 0.486);
+    background-color: rgba(45, 187, 192, 0.8);
     border-radius: 4px;
     font-size: 1.5rem;
     cursor:pointer;
 }
 
 .controls{
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    list-style: none;
+   width: 150px;
+    height: 40px;
+    border: none;
+    border-radius: 2px;
+    font-size: 2rem;     
+    margin:auto; 
+    cursor:grab;
 
     /* display: none; */
 }
 
 
-  

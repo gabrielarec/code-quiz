@@ -10,11 +10,12 @@
 <body>
     <header>
         <div class= "card timer">
-            <div class = "timer-text">
+            <div class = "timer-text"> </div>
             <div class="large-font timer-count">75 seconds remaining</div>
               <button class="view-scores">High Scores</button>
         </div>
-                <div class="quiz"> <h1> Code Quiz Game</h1>
+                <div class="quiz" id="quiz"> 
+                    <h1> Code Quiz Game</h1>
                     <h2>Introduction: </h2> 
                     <p>You will be taking a timed quiz on JavaScript fundamentals. It will store high scores 
                     and will be compared to your other classmates. </p>
@@ -23,48 +24,47 @@
                      If you answer the question incorrectly, time will be subctracted from the clock. 
                     When all the questions are answered or the timer reaches to ZERO "0" the game is over 
                     and you will be given a slot to save your initials. Have fun! </p>
-                </div>    
+                </div> 
+               
 
     </header>
-<section> 
-    <div class="container">
-        <div id="game" class="justy-center flex-column"> 
-         <div id="hud">
-         <div class="hud-item">  
-          <p id="progressText" class="hud-prefix">
-            Question 
-          </p>
-          <div id="progressBar">
-                <div id="progressBarFull"></div>
-        </div>
-    </div>  
     <!-- questions -->
-    <div id="question"> answer to questions</div>
-    <div class="choice-container">
-        <p class="choice-prefix">A</p>
-        <p class="choice-text" data-number="1"> choice </p>
+<div class ="quiz-container" id="quiz">
+    <div class="quiz-header">
+        <h2 id="question"> Question</h2>
+        <ul>
+            <li>
+                <button class="btn">A.</button>
+            </li>
+            <li>
+                <button class="btn">B.</button>
+            </li>
+            <li>
+                <button class="btn">C.</button>
+            </li>
+            <li>
+                <button class="btn">D.</button>
+            </li>
+        </ul>
     </div>
-    <div class="choice-container">
-        <p class="choice-prefix">B</p>
-        <p class="choice-text" data-number="2"> choice 2</p>
-    </div>
-    <div class="choice-container">
-        <p class="choice-prefix">C</p>
-        <p class="choice-text" data-number="3"> choice 3</p>
-    </div>
-    <div class="choice-container">
-        <p class="choice-prefix">D</p>
-        <p class="choice-text" data-number="4"> choice 4</p>
-    </div>
-</section>
-    
+</div>
+
+    <button id="start-button">Start</button>
     <div class="controls">
-        <button class="start-button">Start</button>
-        <button class="go-back">Go back</button>
-        <button class="clear-scores"> Clear scores</button>
+        <button id="go-back" class="button">Go back</button>
+        <button id="clear-scores" class="button"> Clear scores</button>
+    </div>
+
+    <div id="timer-count" class="timer-count"></div>
+    <div class="score-container hide">
+        <div class="score"></div>
+        <form>
+            <input type="text" placeholder="Enter initials">
+            <button type="submit">Save</button>
+        </form>
     </div>
     
         <!-- script tag added  -->
-    <script src="./Develop/script.js"></script>
+    <script src="Develop/script.js"></script>
 </body>
 </html>

@@ -15,29 +15,37 @@ const scoreElement = document.querySelector('.score');
 const goBackButton = document.getElementById("go-back");
 const clearScoresButton = document.getElementById("clear-scores");
 const timerElement = document.getElementById('timer-count');
-const questionContainerElement = document.querySelector ('.question-container');
+const quizContainerElement = document.querySelector ('.quiz-container');
 const questionElement = document.getElementById('question');
 const answerButtonsElement = document.querySelector('.answer-buttons');
 
 //Setting the timer duration and current questions
 const TIMER_DURATION = 75 //in seconds
-let shuffledQuestions, currentQuestionIndex, timer, score, timeLeft;
-
-//Event listener for the start button
-startButton.addEventListener("click", startGame);
+let shuffledQuestions, currentQuestionIndex, timer, score, timeLeft = TIMER_DURATION;
 
 //starting the game
+
 function startGame() {
+    console.log("Game started!");
+    // timeLeft = TIMER_DURATION;
+    timerElement.innerText= '${timeLeft} seconds remaining';
     startButton.classList.add('hide');
     shuffledQuestions = questions.sort(() => Math.random() -0.5)
     currentQuestionIndex = 0
     score = 0;
     scoreElement.innerText = score;
     timerElement.innerText = timeLeft;
-    questionContainerElement.classList.remove('hide');
-    setNextQuestion()
+    quizContainerElement.classList.remove('hide');
+    // setNextQuestion()
     startTimer()
 }
+
+function setNextQuestion(){
+        resetState();
+        showQuestion(shuffledQuestions[currentQuestionIndex]);
+    }
+//Event listener for the start button
+startButton.addEventListener("click", startGame);
 
 
 //function to start the timer
@@ -51,11 +59,6 @@ timer = setInterval(() => {
     endGame();
    }
   }, 1000)
-}
-
-function setNextQuestion(){
-    resetState();
-    showQuestion(shuffledQuestions[currentQuestionIndex]);
 }
 
 //function to show a question 
@@ -107,71 +110,66 @@ let questions = [
     {
         question: "What are the advantages of using Rest in Web API?",
         answers: [
-            {choice1: 'It allows less data transfer between client and server', correct:false},
-            {choice2: 'It is easy to use and lightweight.', correct: false},
-            {choice3: 'It provides more flexibility.', correct: false},
-            {choice4: 'All of the above', correct: true}
+            {text: 'It allows less data transfer between client and server', correct:false},
+            {text: 'It is easy to use and lightweight.', correct: false},
+            {text: 'It provides more flexibility.', correct: false},
+            {text: 'All of the above', correct: true}
         ]
     },
     {
         question: "Who painted the Mona Lisa?",
         answers: [
-            {choice1: "Leonardo DiCaprio ", correct: false},
-            {choice2: "Lionel Messi", correct:false},
-            {choice3: "Albert Einstein", correct:false},
-            {choice4: "Leonardo DaVinci", correct:true},
+            {text: "Leonardo DiCaprio ", correct: false},
+            {text: "Lionel Messi", correct:false},
+            {text: "Albert Einstein", correct:false},
+            {text: "Leonardo DaVinci", correct:true},
         ]
     },
 
     {  question: "What is the joule a unit of?",
         answers: [
-            {choice1:"Fire", correct: false},
-            {choice2:"Air", correct: false},
-            {choice3:"Wind", correct: false},
-            {choice4:"Ernergy", correct: true},
+            {text:"Fire", correct: false},
+            {text:"Air", correct: false},
+            {text:"Wind", correct: false},
+            {text:"Ernergy", correct: true},
         ]
     },
     {  question: "Which is the chemical symbol for potassium?",
         answers: [
-            {choice1:"Q", correct: false},
-            {choice2:"P", correct: false},
-            {choice3:"M", correct: false},
-            {choice4:"K", correct: true},
+            {text:"Q", correct: false},
+            {text:"P", correct: false},
+            {text:"M", correct: false},
+            {text:"K", correct: true},
         ]
     },
     {  question: "What color is the sunset on Mars?",
         answers: [
-            {choice1:"Red", correct: false},
-            {choice2:"Pink", correct: false},
-            {choice3:"Yellow", correct: false},
-            {choice4:"Blue", correct: true},
+            {text:"Red", correct: false},
+            {text:"Pink", correct: false},
+            {text:"Yellow", correct: false},
+            {text:"Blue", correct: true},
     ]
     },
     {  question: "How many bones do sharks have in their bodies?",
         answers: [
-            {choice1:"100", correct: false},
-            {choice2:"450", correct: false},
-            {choice3:"70", correct: false},
-            {choice4:"0", correct: true},
+            {text:"100", correct: false},
+            {text:"450", correct: false},
+            {text:"70", correct: false},
+            {text:"0", correct: true},
     ]
     },
     {  question: "How many hearts does an octopus have?",
         answers: [
-            {choice1:"10", correct: false},
-            {choice2:"1", correct: false},
-            {choice3:"2", correct: false},
-            {choice4:"3", correct: true},
+            {text:"10", correct: false},
+            {text:"1", correct: false},
+            {text:"2", correct: false},
+            {text:"3", correct: true},
     ]
     },
 ]
 
 function endGame() {
-  questionContainerElement.classList.add('hide');
+  quizContainerElement.classList.add('hide');
   scoreElement.innerText = `Your final score is ${score}`;
 }
 
-function resetState() {
-    while (answerButtonsElement.firstChild) {
-        answerButtonsElement.removeChild(answerButtonsElement.firstChild);
-    }
-}

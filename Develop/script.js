@@ -9,7 +9,6 @@
 // WHEN the game is over
 // THEN I can save my initials and score
 
-//Selecting elements from HTML file
 const startButton = document.getElementById("start-button");
 const scoreElement = document.querySelector('.score');
 const goBackButton = document.getElementById("go-back");
@@ -17,7 +16,26 @@ const clearScoresButton = document.getElementById("clear-scores");
 const timerElement = document.getElementById('timer-count');
 const quizContainerElement = document.querySelector ('.quiz-container');
 const questionElement = document.getElementById('question');
-const answerButtonsElement = document.querySelector('.answer-buttons');
+const answerButtonsElement = document.querySelectorAll('#answer-buttons button');
+
+
+
+//function to change pages to each question and hide the elements
+function changePage(oldPage, newPage, oldElements, newElements) {
+    oldPage.classList.add("hide");
+    newPage.classList.remove("hide");
+    
+    oldElements.forEach(element => element.classList.add("hide"));
+    newElements.forEach(element => element.classList.remove("hide"));
+  }
+
+  changePage(
+    document.getElementById("quiz"), 
+    document.querySelector(".quiz-container"),
+    [document.querySelector(".quiz")],
+    [document.getElementById("timer-count"), scoreElement, questionElement, ...answerButtonsElement]
+  );
+  
 
 //Setting the timer duration and current questions
 const TIMER_DURATION = 75 //in seconds
@@ -28,7 +46,7 @@ let shuffledQuestions, currentQuestionIndex, timer, score, timeLeft = TIMER_DURA
 function startGame() {
     console.log("Game started!");
     // timeLeft = TIMER_DURATION;
-    timerElement.innerText= '${timeLeft} seconds remaining';
+    timerElement.innerText= `${timeLeft} seconds remaining`;
     startButton.classList.add('hide');
     shuffledQuestions = questions.sort(() => Math.random() -0.5)
     currentQuestionIndex = 0
@@ -36,17 +54,23 @@ function startGame() {
     scoreElement.innerText = score;
     timerElement.innerText = timeLeft;
     quizContainerElement.classList.remove('hide');
-    // setNextQuestion()
+    showQuestion(shuffledQuestions[currentQuestionIndex]); // Display the first question
     startTimer()
 }
+//event listener for the start button
 
+
+// setNextQuestion()
 function setNextQuestion(){
         resetState();
+        if (currentQuestionIndex < shuffledQuestions.lenght){
         showQuestion(shuffledQuestions[currentQuestionIndex]);
+        } else {
+            endGame();
+        }
     }
 //Event listener for the start button
 startButton.addEventListener("click", startGame);
-
 
 //function to start the timer
 function startTimer() {
@@ -60,19 +84,18 @@ timer = setInterval(() => {
    }
   }, 1000)
 }
-
 //function to show a question 
 function showQuestion(question) {
     questionElement.innerText = question.question;
-    question.answers.forEach((answer) => {
-        const button = document.createElement('button');
+    question.answers.forEach((answer, index) => {
+        const button = answerButtonsElement[index];
         button.innerText = answer.text;
         button.classList.add('btn');
         if (answer.correct) {
             button.dataset.correct = answer.correct;
         }
         button.addEventListener('click', selectAnswer);
-        answerButtonsElement.appendChild(button);
+
     });
 }
 // function to set the next question 

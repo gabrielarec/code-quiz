@@ -18,7 +18,7 @@ header {
     text-align:start;
     background: #4d6483c9;
     color: #fff;
-    border-bottom:30px solid #879274;
+    border-bottom:30px solid #73e2ea;
 }
 
 h1 {
@@ -31,25 +31,27 @@ h1 {
 }
 .quiz-container{
     width: 600px;
-    background-color: white;
+    background-color: rgb(203, 228, 247);
     border-radius: 15px;
     padding: 10px;
     box-shadow: 0 0 10px 2px; 
-    margin-left: 30%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto
     
 }
 
-.choice-container{
+/* .choice-container{
     display: flex;
     margin-bottom:0.8rem;
     width: 100%;
     border-radius:3px;
     font-size: 1rem;
     min-width: 80vw;
-    background-color: pink;
+    background-color: rgb(143, 25, 45);
     cursor:pointer;
     box-shadow: 0 0.4rem 1.4rem;
-}
+} */
 ul{
     list-style-type: none;
     padding: 5;
@@ -81,12 +83,12 @@ ul{
     margin: 20px 0;
 } */
 
-.answer-button{
-    background-color: rgb(132, 184, 184);
+.btn.answer-buttons{
+    background-color: rgba(214, 169, 169, 0.96);
     border: none;
     border-radius: 5px;
     padding: 5px 10px;
-    color: aliceblue;
+    color: rgb(51, 60, 43);
     cursor: pointer;
     outline:none;
     font-size: 1rem;
@@ -109,7 +111,7 @@ ul{
 
 .controls{
    width: 150px;
-    height: 40px;
+    /* height: 40px; */
     border: none;
     border-radius: 2px;
     font-size: 2rem;     

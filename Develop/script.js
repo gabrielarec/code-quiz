@@ -88,7 +88,7 @@ timer = setInterval(() => {
 }
 //function to show a question 
 function showQuestion(question) {
-    console.log("JNBJFKLSBNJK");
+    console.log("NEXT QUESTION");
     console.log(questionElement);
     questionElement.innerText = question.question;
     question.answers.forEach((answer, index) => {

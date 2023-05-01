@@ -15,13 +15,14 @@ const goBackButton = document.getElementById("go-back");
 const clearScoresButton = document.getElementById("clear-scores");
 const timerElement = document.getElementById('timer-count');
 const quizContainerElement = document.querySelector ('.quiz-container');
-const questionElement = document.getElementById('question');
-const answerButtonsElement = document.querySelectorAll('#answer-buttons button');
-
+const questionElement = document.getElementById('questions');
+const answerButtonsElement = document.querySelectorAll('.answer-buttons');
+console.log(answerButtonsElement);
 
 
 //function to change pages to each question and hide the elements
 function changePage(oldPage, newPage, oldElements, newElements) {
+    console.log(newElements)
     oldPage.classList.add("hide");
     newPage.classList.remove("hide");
     
@@ -45,7 +46,7 @@ let shuffledQuestions, currentQuestionIndex, timer, score, timeLeft = TIMER_DURA
 
 function startGame() {
     console.log("Game started!");
-    // timeLeft = TIMER_DURATION;
+    timeLeft = TIMER_DURATION;
     timerElement.innerText= `${timeLeft} seconds remaining`;
     startButton.classList.add('hide');
     shuffledQuestions = questions.sort(() => Math.random() -0.5)
@@ -62,8 +63,9 @@ function startGame() {
 
 // setNextQuestion()
 function setNextQuestion(){
-        resetState();
-        if (currentQuestionIndex < shuffledQuestions.lenght){
+        // resetState();
+        console.log(currentQuestionIndex < shuffledQuestions.length)
+        if (currentQuestionIndex < shuffledQuestions.length){
         showQuestion(shuffledQuestions[currentQuestionIndex]);
         } else {
             endGame();
@@ -86,6 +88,8 @@ timer = setInterval(() => {
 }
 //function to show a question 
 function showQuestion(question) {
+    console.log("JNBJFKLSBNJK");
+    console.log(questionElement);
     questionElement.innerText = question.question;
     question.answers.forEach((answer, index) => {
         const button = answerButtonsElement[index];
@@ -102,11 +106,12 @@ function showQuestion(question) {
 
 function selectAnswer(e) {
     const selectedButton = e.target;
+    console.log(selectedButton);
     const correct = selectedButton.dataset.correct;
-    setStatusClass(document.body, correct);
-    Array.from(answerButtonsElement.children).forEach((button) => {
-    setStatusClass(button, button.dataset.correct);
-    });
+    // setStatusClass(document.body, correct);
+    // Array.from(answerButtonsElement.children).forEach((button) => {
+    // setStatusClass(button, button.dataset.correct);
+    // });
     if (correct) {
         score +=1;
         scoreElement.innerText = score;
@@ -115,7 +120,7 @@ function selectAnswer(e) {
         if (timeLeft <0){
         timeLeft =0;
         }
-    timerElement.innerText = timeLeft;
+        timerElement.innerText = timeLeft;
     }
 
     currentQuestionIndex++;
@@ -154,7 +159,7 @@ let questions = [
             {text:"Fire", correct: false},
             {text:"Air", correct: false},
             {text:"Wind", correct: false},
-            {text:"Ernergy", correct: true},
+            {text:"Energy", correct: true},
         ]
     },
     {  question: "Which is the chemical symbol for potassium?",
@@ -192,6 +197,7 @@ let questions = [
 ]
 
 function endGame() {
+  console.log(quizContainerElement);
   quizContainerElement.classList.add('hide');
   scoreElement.innerText = `Your final score is ${score}`;
 }
